@@ -1,0 +1,48 @@
+data:
+    dataset: "ToyData"
+    image_size: 64
+    channels: 3
+    num_workers: 4
+    data_dir: "/home/tanvir/Work/754/project/other_code/ClearSight"
+    train_data_dir: "/home/tanvir/Work/754/project/other_code/ClearSight/data/toy_data/train"
+    val_data_dir: "/home/tanvir/Work/754/project/other_code/ClearSight/data/toy_data/val"
+    filelist: "train.txt"
+    val_filelist: "val.txt"
+    conditional: True
+
+model:
+    in_channels: 3
+    out_ch: 3
+    ch: 128
+    ch_mult: [1, 2, 3, 4]
+    num_res_blocks: 2
+    attn_resolutions: [16, ]
+    dropout: 0.0
+    ema_rate: 0.999
+    ema: True
+    resamp_with_conv: True
+
+diffusion:
+    beta_schedule: linear
+    beta_start: 0.0001
+    beta_end: 0.02
+    num_diffusion_timesteps: 1000
+
+training:
+    patch_n: 16
+    batch_size: 1
+    n_epochs: 1775
+    n_iters: 2000000
+    snapshot_freq: 50
+    validation_freq: 50
+
+sampling:
+    batch_size: 4
+    last_only: True
+
+optim:
+    weight_decay: 0.000
+    optimizer: "Adam"
+    lr: 0.00002
+    amsgrad: False
+    eps: 0.00000001
