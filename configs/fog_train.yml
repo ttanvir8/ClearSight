@@ -1,6 +1,6 @@
 data:
     dataset: "Fog"
-    image_size: 
+    image_size: 64
     channels: 3
     num_workers: 32
     data_dir: "/home/tanvir/Work/754/project/other_code/WeatherDiffusion"
@@ -14,7 +14,7 @@ model:
     in_channels: 3
     out_ch: 3
     ch: 128
-    ch_mult: [1, 1, 2, 3, 4]
+    ch_mult: [1, 2, 3, 4]
     num_res_blocks: 2
     attn_resolutions: [16, ]
     dropout: 0.0
@@ -29,7 +29,7 @@ diffusion:
     num_diffusion_timesteps: 1000
 
 training:
-    patch_n: 8
+    patch_n: 16
     batch_size: 4
     n_epochs: 420
     n_iters: 2500000

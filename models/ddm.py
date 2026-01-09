@@ -144,7 +144,7 @@ class DenoisingDiffusion(object):
             self.load_ddm_ckpt(self.args.resume)
 
         for epoch in range(self.start_epoch, self.config.training.n_epochs):
-            print('epoch: ', epoch)
+            print('epoch: ', epoch, flush=True)
             data_start = time.time()
             data_time = 0
             for i, (x, y) in enumerate(train_loader):
@@ -166,7 +166,7 @@ class DenoisingDiffusion(object):
                     loss = noise_estimation_loss(self.model, x, t, e, b)
 
                 if self.step % 10 == 0:
-                    print(f"step: {self.step}, loss: {loss.item()}, data time: {data_time / (i+1)}")
+                    print(f"step: {self.step}, loss: {loss.item()}, data time: {data_time / (i+1)}", flush=True)
 
                 self.optimizer.zero_grad()
                 self.scaler.scale(loss).backward()
